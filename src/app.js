@@ -25,6 +25,36 @@ app.get('', (req, res) => {
     });
 });
 
+app.get('/recentMatches', (req, res) => {
+    const summonerName = 'Winter Mintt'; //replace
+
+    if(!summonerName) {
+        return res.send({
+            error: 'You must provide a summoner name'
+        });
+    }
+
+    // Use provided summoner name to get puuid, use puuid to get list of most recent (20) match ids, us match ids to get individual match stats
+    summoner(summonerName, (error, { puuid } = {}) => {
+        if(error)
+            return res.send({ error });
+        
+        console.log(`puuid: ${puuid}`);
+
+        matchIds(puuid, (error, matchIds) => {
+            if(error)
+                return res.send({ error })
+
+            console.log(`recent matches: ${JSON.stringify(matchIds)}`);
+            
+            // replace this with matchdata call once that is implemented
+            res.send({
+                matchIds: matchIds
+            });
+        });
+    });
+});
+
 app.listen(port, () => {
     console.log(`Server is up on port ${port}`);
 });
