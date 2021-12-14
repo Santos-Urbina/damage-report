@@ -1,7 +1,9 @@
 const request = require('request');
 
 const summoner = (summonerName, callback) => {
-    const url = `https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName}?api_key=RGAPI-0d5e2465-f2ab-4409-a793-d48a31ddfd8d`;
+    // TODO: create config.json file to store apiKey
+    const apiKey = '';
+    const url = `https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName}?api_key=${apiKey}`;
 
     // TODO: update placeholders with proper error messages
     request({ url, json: true }, (error, { body }) => {

@@ -1,7 +1,9 @@
 const request = require('request');
 
 const matchIds = (puuid, callback) => {
-    const url = `https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?start=0&count=20&api_key=RGAPI-0d5e2465-f2ab-4409-a793-d48a31ddfd8d`;
+    // TODO: create config.json file to store apiKey
+    const apiKey = '';
+    const url = `https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?start=0&count=20&api_key=${apiKey}`;
 
     // TODO: update placeholders with proper error messages
     request({ url, json: true }, (error, { body }) => {
