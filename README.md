@@ -1,0 +1,1 @@
+# Damage Report for League of Legends matches
