@@ -3,7 +3,7 @@ const path = require('path');
 const hbs = require('hbs');
 
 const summoner = require('./utils/summoner');
-const matchIds = require('./utils/matchids.js');
+const matchIds = require('./utils/matchids');
 const matchData = require('./utils/matchdata');
 
 const app = express();
@@ -26,7 +26,7 @@ app.get('', (req, res) => {
 });
 
 app.get('/recentMatches', (req, res) => {
-    const summonerName = req.query.summonerName;
+    const summonerName = '';
 
     if(!summonerName) {
         return res.send({
@@ -48,8 +48,19 @@ app.get('/recentMatches', (req, res) => {
             console.log(`recent matches: ${JSON.stringify(matchIds)}`);
             
             // TODO: replace this with matchdata call once that is implemented
-            res.send({
-                matchIds: matchIds
+            // res.send({
+            //     matchIds: matchIds
+            // });
+            const matchId = matchIds.matchIds[0];
+            matchData(matchId, (error, matchData) => {
+                if(error)
+                    return res.send({ error });
+
+                res.send({
+                    // matchData: matchData,
+                    gameMode: matchData.gameMode,
+                    champions: matchData.champions
+                });
             });
         });
     });
