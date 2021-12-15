@@ -23,3 +23,9 @@ header a {
 header a:hover {
     color: rgb(1, 255, 170);
 }
+
+#name-search {
+    display: block;
+    text-align: center;
+    padding: 5vh 0;
+}
