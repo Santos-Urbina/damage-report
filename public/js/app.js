@@ -5,12 +5,6 @@ const damageGraphDiv = document.getElementById('damage-graph');
 
 const message = document.querySelector('#message')
 
-function damageGraph() {
-    const svg = d3.select(damageGraphDiv).append("svg")
-            .attr("width", "65vw")
-            .attr("height", "65vh");
-}
-damageGraph();
 
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -25,5 +19,10 @@ searchForm.addEventListener('submit', (e) => {
                 message.textContent = data.gameMode;
             }
         } );
-    } );
+    } ).then(() => {
+        //TODO: Right now we just create the svg, we need to use the data provided to create the visualization
+        viz(damageGraphDiv);
+    });
 });
+
+
