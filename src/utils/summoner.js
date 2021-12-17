@@ -1,8 +1,9 @@
 const request = require('request');
+const config = require('./config.json');
+
+const apiKey = config.key;
 
 const summoner = (summonerName, callback) => {
-    // TODO: create config.json file to store apiKey
-    const apiKey = '';
     const url = `https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName}?api_key=${apiKey}`;
 
     // TODO: update placeholders with proper error messages

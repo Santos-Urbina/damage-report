@@ -1,8 +1,9 @@
 const request = require('request');
+const config = require('./config.json');
+
+const apiKey = config.key;
 
 const matchData = (matchId, callback) => {
-    // TODO: create config.json file to store apiKey
-    const apiKey = '';
     const url = `https://americas.api.riotgames.com/lol/match/v5/matches/${matchId}?api_key=${apiKey}`;
 
     // TODO: update placeholders with proper error messages
