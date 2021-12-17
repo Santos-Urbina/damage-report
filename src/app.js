@@ -26,7 +26,7 @@ app.get('', (req, res) => {
 });
 
 app.get('/recentMatches', (req, res) => {
-    const summonerName = '';
+    const summonerName = req.query.summonerName;
 
     if(!summonerName) {
         return res.send({

@@ -27,5 +27,16 @@ header a:hover {
 #name-search {
     display: block;
     text-align: center;
-    padding: 5vh 0;
+    padding: 3vh 0;
+}
+
+p {
+    display: block;
+    text-align: center;
+}
+
+svg {
+    display: block;
+    background-color: aliceblue;
+    margin: auto;
 }
