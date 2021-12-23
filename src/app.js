@@ -64,5 +64,5 @@ app.get('/recentMatches', (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Server is up on port ${port}`);
+    console.log(chalk.bgCyan.black.bold(`Server is up on port ${port}`));
 });
