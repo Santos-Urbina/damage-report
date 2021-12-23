@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const hbs = require('hbs');
+const chalk = require('chalk');
 
 const summoner = require('./utils/summoner');
 const matchIds = require('./utils/matchids');
@@ -47,10 +48,6 @@ app.get('/recentMatches', (req, res) => {
 
             console.log(`recent matches: ${JSON.stringify(matchIds)}`);
             
-            // TODO: replace this with matchdata call once that is implemented
-            // res.send({
-            //     matchIds: matchIds
-            // });
             const matchId = matchIds.matchIds[0];
             matchData(matchId, (error, matchData) => {
                 if(error)
