@@ -9,15 +9,16 @@ const summoner = (summonerName, callback) => {
     // TODO: update placeholders with proper error messages
     request({ url, json: true }, (error, { body }) => {
         if(error)
-            callback('placeholder');
-        else if(body.length === 0)
-            callback('placeholder');
+            callback('Unable to connect to API', undefined);
+        else if(JSON.stringify(body.status.message).includes("summoner not found"))
+            callback('Unable to find summoner. Try another search.', undefined);
         else {
             callback(undefined, {
                 puuid: body.puuid,
                 summonerLevel: body.summonerLevel,
                 name: body.name
             });
+            console.log(JSON.stringify(body));
         }
     });
 };
